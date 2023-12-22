@@ -49,7 +49,7 @@ class Record:
         wf.writeframes(b''.join(self.rec_sig))
         wf.close()
 
-def record_main():
+def record_test():
     chunksize=1024
     nchannels=1
     fs=44100
