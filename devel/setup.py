@@ -24,6 +24,12 @@ setup(
         'sub = devel.20231016_sub_test:main',
         'speech = devel.sub_speech:main',
         'chat = devel.voice_chat_bot:main',
+        'gpt = devel.sub_gpt:main',
+        'pubvoice = devel.pub_voice_enter:main',
+        'pubvoicetest = devel.pub_voice_enter_test:main',
+        'motor = devel.sub_motor:main',
+        'record_test = devel.record_test:main',
+        'record_pub = devel.record_pub:main',
         ],
     },
 )
