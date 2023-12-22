@@ -53,7 +53,7 @@ def record_main():
     chunksize=1024
     nchannels=1
     fs=44100
-    filename = " /home/uchida/devel1/src/devel/devel /output.wav"
+    filename = "/home/uchida/devel1/src/devel/devel/output.wav"
     print("rec")
     rec = Record(chunksize, nchannels, fs)
     rec.recording(filename)
