@@ -24,6 +24,19 @@ def main(args=None):  # main関数
     # OpenAIのAPIキーを設定
     openai.api_key = 'api'
     record_main()
+    print("テキストファイル作成")
+    with open('output.wav', "rb") as audio_file:
+    # Whisper APIを使用してオーディオファイルをテキストに変換
+        transcript = openai.Audio.transcribe("whisper-1", audio_file)
+
+        # 音声からテキスト変換した結果をファイルに保存
+        with open('enter_voice_word.txt', 'a') as output_file:
+            output_file.write(transcript.txt)
+            file_path = '/home/uchida/devel1/src/devel/devel/enter_voice_word.txt'
+            with open(file_path, 'r') as file:
+                file_content = file.read()
+            print(file_content)
+
     try:
         rclpy.spin_once(node)
     except KeyboardInterrupt:
