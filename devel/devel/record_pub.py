@@ -17,6 +17,10 @@ class HscrPub(Node):  # "Happy World"とパブリッシュ並びに表示する�
 
     def callback(self):  # コールバック関数
         print("a")
+        msg = String()
+        msg.data = input()
+        self.pub.publish(msg)
+        self.get_logger().info(f'パブリッシュ: {msg.data}')
 
 def main(args=None):  # main関数
     rclpy.init()
@@ -30,12 +34,18 @@ def main(args=None):  # main関数
         transcript = openai.Audio.transcribe("whisper-1", audio_file)
 
         # 音声からテキスト変換した結果をファイルに保存
-        with open('enter_voice_word.txt', 'a') as output_file:
-            output_file.write(transcript.txt)
-            file_path = '/home/uchida/devel1/src/devel/devel/enter_voice_word.txt'
-            with open(file_path, 'r') as file:
-                file_content = file.read()
-            print(file_content)
+        try:
+            with open('enter_voice_word.txt', 'a') as output_file:
+                output_file.write(transcript.text)
+                print("transcript.text:", transcript.text)
+                file_path = '/home/uchida/devel1/src/devel/devel/enter_voice_word.txt'
+                with open(file_path, 'r') as file:
+                    file_content = file.read()
+                print(file_content)
+        except FileNotFoundError:
+            print(f"ファイル '{file_path}' が見つかりません。")
+        except Exception as e:
+            print(f"エラー: {e}")
 
     try:
         rclpy.spin_once(node)
