@@ -26,7 +26,7 @@ def main(args=None):  # main関数
     rclpy.init()
     node = HscrPub()
     # OpenAIのAPIキーを設定
-    openai.api_key = 'apikey'
+    openai.api_key = 'api'
     record_main()
     print("テキストファイル作成")
     with open('/home/uchida/devel1/src/devel/devel/output.wav', "rb") as audio_file:
@@ -35,7 +35,7 @@ def main(args=None):  # main関数
 
         # 音声からテキスト変換した結果をファイルに保存
         try:
-            with open('enter_voice_word.txt', 'w') as output_file:
+            with open('/home/uchida/devel1/src/devel/devel/enter_voice_word.txt', 'w') as output_file:
                 transcript = openai.Audio.transcribe("whisper-1", audio_file)
                 output_file.write(transcript.text)
                 print("transcript.text:", transcript.text)
